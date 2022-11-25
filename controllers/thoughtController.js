@@ -92,8 +92,8 @@ updateThought(req,res){
   addReaction (req,res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $push: { reactions: req.body } },
-      { runValidators: true, new: true }
+      { $addToSet: { reactions: req.body} },
+      {  new: true }
     )
     .populate({path: 'reactions', select: '-__v'})
     .select('-__v')
@@ -111,22 +111,13 @@ updateThought(req,res){
 
   //delete reaction
   deleteReaction (req,res){
-    Thought.findOneAndUpdate(
-      { _id: req.params.thoughtId },
-      { $pull: { reactionId: req.params.reactionId } },
-      { runValidators: true, new: true }
-    )
-      .then((thought) =>
-        !thought
-          ? res.status(404).json({ message: 'No thought with this id!' })
-          : res.json(thought)
-      )
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      }
-    )
-  }
-};
+    Thought.findByIdAndUpdate(req.params.thoughtId, {
+                $pull: { reactions: req.body.reactionId }
+            }, { new: true })
+                .then(thought => !thought
+                    ? res.status(404).json({ message: 'No thought with that ID' })
+                    : res.json(thought))
+        }
+}
 
 module.exports = thoughtController

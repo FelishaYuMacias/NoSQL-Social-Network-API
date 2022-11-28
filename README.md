@@ -51,6 +51,7 @@ https://insomnia.rest/download
 
 See video below for walkthrough.
 
+https://drive.google.com/file/d/14WC9XsR6XjnHj2aEOhyCmTj8tCTzC0qA/view
 
 Run the following command to get the server running
 ```md

@@ -33,26 +33,24 @@ THEN I am able to successfully create, update, and delete users and thoughts in 
 WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ```
+
+## Installation
+* Clone this repository to your local machine.
+
+* Right click on server.js and select "Open in Integrated Terminal"
+
+* There should be a package.json file included. To install the various npm packages used run the command
+```md
+npm i
+```
+
+If you do not have Insomnia installed for testing download it here:
+https://insomnia.rest/download
+
 ## Usage
 
 See video below for walkthrough.
 
-https://drive.google.com/file/d/1697SDLxzi7AgFPcfzPlU_L_Q0Le51tCk/view
-
-Update the env.EXAMPLE file name to .env (delete .EXAMPLE from the name) and update with your username and password for MySql.
-
-Once everything is installed and updated with your information, run the following commands to create your database, tables, and put seed information to get started.
-```md
-mysql - u root -p
-
-<yourpassword>
-
-SOURCE db/schema.sql;
-
-exit
-
-npm run seed
-``` 
 
 Run the following command to get the server running
 ```md
